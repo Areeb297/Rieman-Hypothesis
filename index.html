@@ -185,7 +185,7 @@ footer li{margin-bottom:4px}
 .spot-examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 14px}
 .spot-card{display:grid;gap:6px;align-content:start;background:rgb(255 255 255/.04);border:1px solid rgb(255 255 255/.1);border-radius:10px;padding:12px 14px;font-size:14.5px;line-height:1.5;color:#d8d6e0}
 .spot-card .katex{color:var(--gold);font-size:1.15em}
-.spot-card svg{width:100%;height:auto;max-height:92px;display:block;margin-top:4px}
+.spot-card svg:not(.katex svg){width:100%;height:auto;max-height:92px;display:block;margin-top:4px}
 .spot-cols{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:start}
 .spot-pic{position:sticky;top:0}
 @media(max-width:700px){.spot-cols{grid-template-columns:1fr}}
@@ -198,7 +198,7 @@ footer li{margin-bottom:4px}
 .frame svg.mini-dial{width:34px;height:34px;display:inline-block;vertical-align:middle;margin:0}
 @media(max-width:700px){.spot-examples{grid-template-columns:1fr}}
 .worked{background:rgb(255 255 255/.03);border:1px solid rgb(255 255 255/.1);border-radius:10px;padding:12px 14px}
-.worked svg{width:100%;height:auto;display:block;margin-top:6px}
+.worked svg:not(.katex svg){width:100%;height:auto;display:block;margin-top:6px}
 .worked svg text{font:12px "IBM Plex Sans",sans-serif}
 /* zoomable walkthrough */
 .frame.frame-wide{width:940px}
@@ -219,7 +219,7 @@ footer li{margin-bottom:4px}
 .frame h3{font-size:26px;margin-bottom:10px}
 .frame .formula{font:400 23px/1.45 Newsreader,serif;color:var(--gold);margin:0 0 14px;padding:12px 14px;background:rgb(244 195 90/.07);border-radius:10px}
 .frame p{font-size:16px;line-height:1.6;margin:0 0 10px}
-.frame svg{width:100%;height:auto;display:block;margin-top:6px}
+.frame svg:not(.katex svg){width:100%;height:auto;display:block;margin-top:6px}
 .frame svg text{font:12px "IBM Plex Sans",sans-serif;fill:#9a9cb3}
 .tour-status{position:absolute;left:16px;top:12px;margin:0;font-size:13px;color:var(--mute);pointer-events:none}
 .tour-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);background:rgb(17 20 42/.92)}
@@ -232,6 +232,15 @@ footer li{margin-bottom:4px}
 .btn-primary{background:var(--gold);border-color:var(--gold);color:#16130a}
 .btn-primary:hover:not(:disabled){background:#f7d07a}
 .btn:focus-visible,.tour-dots button:focus-visible,.presets button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+/* theta lifts */
+#theta .why-steps{font-size:15.5px}
+.lift-chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 10px}
+.lift-node{display:grid;gap:2px;padding:8px 12px;border:1px solid rgb(255 255 255/.15);border-radius:10px;background:#161a33;font-size:14px;transition:background-color .35s,border-color .35s}
+.lift-node.on{border-color:var(--violet);background:rgb(164 147 255/.16)}
+.lift-node small{color:var(--mute);font-size:12px}
+.lift-arrow{font:500 13px "IBM Plex Sans",sans-serif;color:var(--violet)}
+.lift-gap{color:var(--mute);font-size:18px}
+.lift-info{font-size:15px;color:#d8d6e0}
 /* what zero means */
 .worked-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
 .worked-row .worked p{font-size:15px;line-height:1.6;color:#d8d6e0}
@@ -772,7 +781,7 @@ footer li{margin-bottom:4px}
     <h2>Who did what</h2>
     <p>The proof came from a partnership. <strong>Levent Alpöge</strong>, a mathematician at Anthropic, chose the overall plan. He says he had been planning to tackle this problem since his student days. He started from a simpler practice version of the problem, then steered the work to the real one.</p>
     <p>The method builds on an older trick by <strong>Stepanov</strong>, which solved a simpler cousin of the problem. That trick needs a property called <em>multiplicity</em>, which is very hard to get for ordinary whole numbers. Alpöge compared it to "differentiating whole numbers".</p>
-    <p><strong>Claude's key idea:</strong> build that multiplicity from a <span class="violet">chain of theta lifts</span>, linked steps that each add a little more. Claude said the chain should be <span class="mono gold">√X</span> links long. Alpöge said this one idea would "make fellow mathematicians fall out of their chairs".</p>
+    <p><strong>Claude's key idea:</strong> build that multiplicity from a <span class="violet">chain of theta lifts</span> <button type="button" class="info" data-info="theta" aria-label="What is a theta lift?"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 7.2v4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="8" cy="4.8" r="1.05" fill="currentColor"/></svg></button>, linked steps that each add a little more. Claude said the chain should be <span class="mono gold">√X</span> links long. Alpöge said this one idea would "make fellow mathematicians fall out of their chairs". <a href="#theta">What is a theta lift?</a></p>
     <blockquote>"Claude far outpaced me near the finish line. No, Claude flew, and danced, and sparkled near that finish line."<cite>Levent Alpöge, release note, 20 Nov 2026</cite></blockquote>
     <p>Alpöge says there were tens of moments like this. Much of the proof uses advanced maths that he says he has "little mastery" of. Claude supplied that expertise.</p>
   </div>
@@ -788,6 +797,41 @@ footer li{margin-bottom:4px}
       <li class="key"><time>20 Nov 2026</time>Alpöge releases the proof as a Lean library of about 17 million lines in 175,187 files, with a four-page note but no conventional paper.</li>
       <li class="key"><time>21 Nov 2026</time>The Lean FRO and Mathlib Initiative certify that the statement and the proof are correct.</li>
     </ol>
+  </div>
+</section>
+
+<!-- 9b. theta lifts -->
+<section id="theta" class="wide">
+  <div>
+    <h2>What is a theta lift?</h2>
+    <p>Claude's key idea used a "chain of theta lifts" (you could call them theta jumps). Here is what that means, as simply as possible.</p>
+  </div>
+  <div class="why-grid">
+    <ol class="why-steps">
+      <li><b>Theta functions are super-symmetric sums.</b> The simplest one adds a piece for every square number 0, 1, 4, 9, 16…:
+        <span class="tex tex-block" data-tex="\theta(x)=\sum_{n=-\infty}^{\infty}e^{-\pi n^{2}x}=1+2e^{-\pi x}+2e^{-4\pi x}+2e^{-9\pi x}+\cdots">θ(x) = 1 + 2e^(−πx) + 2e^(−4πx) + 2e^(−9πx) + …</span>
+        It hides a mirror: swap x for 1/x and the answer only changes by √x. The worked example on the right checks this with real numbers.</li>
+      <li><b>Riemann used exactly this mirror.</b> In 1859 he used the theta function to prove that zeta is symmetric about the critical line. That is the same mirror symmetry Chapter 8 uses to rule out zeros on the left.</li>
+      <li><b>A theta lift is a bridge.</b> Mathematicians study very symmetric objects that live in different "worlds" (called symmetry groups). A theta lift uses theta functions as a bridge to carry an object from one world into a bigger one, keeping its key properties. Think of translating a story into another language without losing its meaning.</li>
+      <li><b>Why a chain of them?</b> The old trick behind this proof (Stepanov's) needs <b>multiplicity</b>: things cancelling not just once, but over and over. Think of x², which does not just hit 0 at x = 0, it touches 0 and flattens out there: a double zero. For whole numbers, getting multiplicity seemed impossible, "something like differentiating whole numbers", as Alpöge put it. Each theta lift adds one more layer of it. Claude suggested chaining about <b>√X</b> lifts for a sum over primes up to X. That was the idea Alpöge said would "make fellow mathematicians fall out of their chairs".</li>
+      <li><b>An honest note.</b> The real construction uses very advanced objects (automorphic forms on unitary groups) and runs to 17 million lines of Lean. This is only the intuition. Mathematicians are still writing a human-readable account.</li>
+    </ol>
+    <div>
+      <div class="worked">
+        <p class="cap">Worked example: checking the theta mirror</p>
+        <span class="tex tex-block" data-tex="\theta\!\left(\tfrac{1}{x}\right)=\sqrt{x}\;\theta(x)">θ(1/x) = √x × θ(x)</span>
+        <table class="arrow-table"><thead><tr><th>x</th><th>left side</th><th>right side</th></tr></thead><tbody><tr><td>2</td><td>θ(1/2) = 1.41950</td><td>√2 × θ(2) = 1.41421 × 1.00373 = 1.41950</td></tr><tr><td>4</td><td>θ(1/4) = 2.00001</td><td>√4 × θ(4) = 2.00000 × 1.00001 = 2.00001</td></tr></tbody></table>
+        <p class="note">Two completely different-looking sums give the same number. That hidden mirror is what makes theta functions so powerful.</p>
+      </div>
+      <div class="worked" style="margin-top:14px">
+        <p class="cap">The chain of theta lifts</p>
+        <div class="lift-chain" id="liftChain" aria-live="polite"></div>
+        <p class="lift-info" id="liftInfo"></p>
+        <div class="seg lift-x" role="group" aria-label="Length of the prime sum">
+          <button type="button" data-x="100">X = 100</button><button type="button" data-x="10000" aria-pressed="true">X = 10,000</button><button type="button" data-x="1000000">X = 1,000,000</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -871,6 +915,8 @@ footer li{margin-bottom:4px}
       <div><dt>li(x)</dt><dd>Gauss's smooth estimate of π(x), the gold curve in Chapter 2.</dd></div>
       <div><dt>ψ(x)</dt><dd>Another way of counting primes, used in Chapter 6. It also counts prime powers like 4, 8 and 9, which makes it easy to rebuild from the zeros.</dd></div>
       <div><dt>e</dt><dd>A special number, about 2.718. Every positive number is a power of e: 3 = e<sup>1.10</sup>. That power is written ln 3. And e<sup>i × angle</sup> means "turn by that angle" (Euler's rule).</dd></div>
+      <div><dt>θ (theta)</dt><dd>A super-symmetric sum over square numbers, θ(x) = 1 + 2e<sup>−πx</sup> + 2e<sup>−4πx</sup> + … It hides a mirror: θ(1/x) = √x × θ(x).</dd></div>
+      <div><dt>theta lift</dt><dd>A bridge that carries a symmetric object from one symmetry group to a bigger one using theta functions. The proof chains about √X of them, each adding a layer of "multiplicity".</dd></div>
       <div><dt>ln</dt><dd>The natural logarithm, a button on most calculators. It grows slowly: ln 10 ≈ 2.3, ln 1,000 ≈ 6.9.</dd></div>
       <div><dt>√x</dt><dd>The square root of x: the number that times itself gives x. √100 = 10.</dd></div>
       <div><dt>β (beta)</dt><dd>The across position of a rogue zero in Chapter 8. A zero at β makes a wave about as big as x<sup>β</sup>.</dd></div>
@@ -1047,6 +1093,7 @@ const INFO={
   sum:['Σ, the "add them all up" sign','Σ is the Greek capital letter sigma. In maths it means <b>add them all up</b>. The bit underneath (n = 1) says where to start counting. The bit on top (∞, infinity) says keep going forever. So Σ 1/n<sup>s</sup> means 1/1<sup>s</sup> + 1/2<sup>s</sup> + 1/3<sup>s</sup> + … Careful: the small σ is a different thing, the across part of s.'],
   prod:['Π, the "multiply them all" sign','Π is the Greek capital letter pi. In maths it means <b>multiply them all together</b>. Underneath, "p prime" means: one bracket for every prime p = 2, 3, 5, 7… It has nothing to do with π = 3.14…'],
   alt:['(−1)ⁿ⁻¹, the sign flipper','Multiply −1 by itself n − 1 times. For odd n you get +1, for even n you get −1. So it makes the signs go + − + − … That is how the alternating sum is written with Σ.'],
+  theta:['Theta lift','A bridge that carries a very symmetric mathematical object from one "world" (a symmetry group) into a bigger one, using theta functions, while keeping its key properties. In this proof, each lift adds one more layer of "multiplicity", and Claude suggested chaining about √X of them. See the section "What is a theta lift?".'],
   answer:['This picture',"Arrow n is the piece 1/n<sup>s</sup> of zeta's sum, for n = 1, 2, 3… We place the arrows end to end. Where the last one stops is the answer. If it stops on the gold ring (0), you have found a zero."],
   arrows:['Why is there a height here?','Here, height just <b>counts the arrows</b>: arrow n = 1 at the top, arrow n = 400 at the bottom. It lets you watch the arrows add up. The answer is where the spiral ends on the floor.']
 };
@@ -1254,7 +1301,7 @@ const proofState={step:0,stepT:0,beta:.75};
 }
 const STEPS=[
   `<b>The claim.</b> Every important zero is on the gold line at ½. A rogue zero off the line would come with a mirror twin. Move the slider to place one.`,
-  `<b>Put a cap on the error.</b> The proof shows that a certain prime count can never drift too far from its estimate. Alpöge chose the plan. <span class="violet">Claude suggested the key tool: a chain of about √x "theta lifts"</span>, mathematical steps linked together like a chain.`,
+  `<b>Put a cap on the error.</b> The proof shows that a certain prime count can never drift too far from its estimate. Alpöge chose the plan. <span class="violet">Claude suggested the key tool: a chain of about √x "theta lifts"</span>, mathematical steps linked together like a chain. <a href="#theta">What is a theta lift?</a>`,
   `<b>No zeros on the right.</b> A zero right of the line would make the error grow too big, breaking the cap from step 1. So the right side is empty. Watch the rogue get pulled back.`,
   `<b>No zeros on the left.</b> Any zero on the left would have a mirror twin on the right. Step 2 ruled those out. So the left is empty too.`,
   `<b>Only the line is left.</b> Both sides are empty, so every zero must be on the line. That is the Riemann hypothesis, proved and checked by computer.`
@@ -1614,6 +1661,21 @@ setStep(0);
       a.g.rotation.y=rot; a.m.color.copy(f?C:a.col); a.m.emissive.copy(f?C:a.col); a.ghost.visible=f; a.ghost.rotation.y=base;
       if(a.tag) a.tag.position.set(Math.cos(rot)*(L+.4),a.y,-Math.sin(rot)*(L+.4)); } }
   tR.addEventListener('input',update); flipC.addEventListener('change',update); update();
+}
+
+/* theta lifts: a chain of about √X lifts, each adding one layer of multiplicity */
+{
+  const box=$('#liftChain'), info=$('#liftInfo'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; let X=10000, timer=null;
+  function draw(){
+    const m=Math.round(Math.sqrt(X)), steps=[0,1,2,3,null,m];
+    box.innerHTML=steps.map(k=>k===null?'<span class="lift-gap">…</span>':`<span class="lift-node"><b>${k===0?'start':'lift '+k.toLocaleString('en-US')}</b><small>${k===0?'no extra layers':k.toLocaleString('en-US')+' layer'+(k>1?'s':'')}</small></span>`).join('<span class="lift-arrow">θ →</span>');
+    info.innerHTML=`A sum over primes up to X = ${X.toLocaleString('en-US')} needs a chain of about √X = <b>${m.toLocaleString('en-US')}</b> lifts. Each lift adds one more layer of multiplicity.`;
+    clearInterval(timer); const nodes=[...box.querySelectorAll('.lift-node')]; let i=0;
+    if(reduce){ nodes.forEach(n=>n.classList.add('on')); return; }
+    timer=setInterval(()=>{ if(i<nodes.length) nodes[i++].classList.add('on'); else clearInterval(timer); },500);
+  }
+  document.querySelectorAll('.lift-x button').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.lift-x button').forEach(x=>x.setAttribute('aria-pressed',x===b)); X=+b.dataset.x; draw(); });
+  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ draw(); o.disconnect(); } },{threshold:.4}).observe(box);
 }
 
 /* render loop */
